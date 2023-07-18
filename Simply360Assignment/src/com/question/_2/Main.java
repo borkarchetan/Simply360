@@ -1,25 +1,25 @@
 package com.question._2;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		String logFile = "trace.log";
+		String logFile = "C:\\Users\\Lenovo\\Desktop\\spring\\Simply360\\Simply360Assignment\\src\\com\\question\\_2\\trace.log";
 		String targetJob = "J1";
 		String targetTimestamp = "2023-06-29 04:04:04";
 
-		try (BufferedReader reader = new BufferedReader(new FileReader(logFile))) {
-			String line;
+		try (Scanner scanner = new Scanner(new FileReader(logFile))) {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date targetDate = dateFormat.parse(targetTimestamp);
 			boolean found = false;
 
-			while ((line = reader.readLine()) != null) {
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
 				String[] parts = line.split(" ", 4);
 				String logTimestamp = parts[0] + " " + parts[1];
 
